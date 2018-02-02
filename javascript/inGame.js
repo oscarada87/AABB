@@ -65,10 +65,10 @@ const checkAnswer = () =>{
   }
   hint.push(A);
   hint.push(B);
-  console.log("hint = " + hint);
-  clearInput();
+  //console.log("hint = " + hint);
   if(A == 4){
     window.alert("恭喜你贏了!");
+    clearHistory();
     return false;
   }
   return hint;
@@ -99,7 +99,7 @@ const clearInput = () =>{
     globalInputCounter--;
     display();
   }
-  console.log("global counter = "+globalInputCounter);
+  //console.log("global counter = " + globalInputCounter);
 }
 
 const display = () =>{
@@ -111,6 +111,46 @@ const display = () =>{
   else{
     displayTarget.innerHTML = "-";
   }
+}
+
+const createNewHistoryElement = (t) =>{
+  let text = document.createTextNode(t);
+  let li = document.createElement('li');
+  li.appendChild(text);
+  return li;
+}
+
+const historyDisplay = () =>{
+  let hint = checkAnswer();
+  if(hint != false){
+    let inputHistory = inputNumberArray[0].toString() +  inputNumberArray[1].toString()   + inputNumberArray[2].toString() + inputNumberArray[3].toString();
+    let numberHistory = document.getElementById('numberHistory');
+    numberHistory.appendChild(createNewHistoryElement(inputHistory));
+
+    let hintHistory = hint[0] + "A" + hint[1] + "B";
+    let hintList = document.getElementById('hintList');
+    hintList.appendChild(createNewHistoryElement(hintHistory));
+
+    clearInput();
+  }
+}
+
+const clearHistory = () =>{
+  let target = document.querySelectorAll('li');
+  let numberHistory = document.getElementById('numberHistory');
+  let hintList = document.getElementById('hintList');
+  let length = target.length;
+  //console.log(target);
+  for(let i = 0; i < (length/2); i++){
+    numberHistory.removeChild(target[i]);
+  }
+  for(let i = (length-1); i >= (length/2); i--){
+    hintList.removeChild(target[i]);
+  }
+  clearInput();
+  //restart
+  answer = random4Numbers();
+  console.log("answer = " + answer);
 }
 
 let inputBox = document.querySelector('.numberInputColumn');
@@ -131,8 +171,8 @@ submitBox.addEventListener('click', (e) =>{
       //console.log(inputNumberArray);
     }
     else if(target.innerHTML === '送出'){
-      console.log("input = " + inputNumberArray);
-      let temporary = checkAnswer();
+      //console.log("input = " + inputNumberArray);
+      historyDisplay();
     }
   }
 });

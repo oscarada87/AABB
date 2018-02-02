@@ -12,10 +12,10 @@
   <body>
     <h1>AABB</h1>
     <div class="container numberDisplay">
-      <div class="displayRow">0</div>
-      <div class="displayRow">0</div>
-      <div class="displayRow">0</div>
-      <div class="displayRow">0</div>
+      <div id="display0" class="displayRow">-</div>
+      <div id="display1" class="displayRow">-</div>
+      <div id="display2" class="displayRow">-</div>
+      <div id="display3" class="displayRow">-</div>
     </div>
     <div class="numberInputColumn">
       <div class="container numberInputRow">
@@ -34,10 +34,11 @@
         <button type="button" class="btn btn-primary inputNumberBtn">9</button>
       </div>
       <div class="container numberInputRow">
-        <button type="button" class="btn btn-primary inputNumberBtn">0</button>
+        <button type="button" class="btn btn-primary inputNumberBtn zeroBtn">0</button>
       </div>
     </div>
     <div class="container submit">
+      <button type="button" class="btn btn-outline-dark deleteBtn">清除</button>
       <button type="button" class="btn btn-outline-dark submitBtn">送出</button>
     </div>
     <hr>

@@ -37,15 +37,10 @@ let answer = random4Numbers();
 console.log("answer = " + answer); //答案
 //console.log(random4Numbers());  //use for debug
 
-/*let tempInput = document.getElementsByClassName('inputNumberBtn');
-let inputNumberButton = [tempInput[9]];
-for(let i = 0; i <= 8; i++){
-  inputNumberButton.push(tempInput[i]);
-}*/
 
 const checkAnswer = () =>{
   if(inputNumberArray.length != 4){
-    window.alert("沒有4位數，母湯喔!");
+    window.alert("沒有4位數");
     return false;
   }
   let hint = [];
@@ -65,7 +60,6 @@ const checkAnswer = () =>{
   }
   hint.push(A);
   hint.push(B);
-  //console.log("hint = " + hint);
   if(A == 4){
     window.alert("恭喜你贏了!");
     clearHistory();
@@ -168,10 +162,8 @@ submitBox.addEventListener('click', (e) =>{
   if (target.type === 'button'){
     if (target.innerHTML === '清除'){
       deleteInput();
-      //console.log(inputNumberArray);
     }
     else if(target.innerHTML === '送出'){
-      //console.log("input = " + inputNumberArray);
       historyDisplay();
     }
   }
